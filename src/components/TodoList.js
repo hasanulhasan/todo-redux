@@ -1,5 +1,5 @@
 import React from 'react';
-import cancel from './../assets/images/cancel.png'
+import cancelImg from './../assets/images/cancel.png'
 
 const TodoList = () => {
   return (
@@ -42,7 +42,7 @@ const TodoList = () => {
         ></div>
 
         <img
-          src={cancel}
+          src={cancelImg}
           class="flex-shrink-0 w-4 h-4 ml-2 cursor-pointer"
           alt="Cancel"
         />
