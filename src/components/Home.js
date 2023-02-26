@@ -7,7 +7,9 @@ import TodoList from './TodoList';
 
 const Home = () => {
   const todos = useSelector((state) => state.todos);
-  // console.log(todos)
+  const filters = useSelector(state => state.filters)
+  // const { status, colors } = filters
+  // console.log(status)
   return (
     <div
       class="grid place-items-center bg-blue-100 h-screen px-6 font-sans">
@@ -16,7 +18,18 @@ const Home = () => {
         <Header />
         <hr class="mt-4" />
         {
-          todos.map(todo => <TodoList todo={todo} key={todo.id} />)
+          todos.filter(todo => {
+            const { status } = filters;
+            console.log(status)
+            switch (status) {
+              case 'Completed':
+                return todo.completed;
+              case 'Incompleted':
+                return !todo.completed;
+              default:
+                return true;
+            }
+          }).map(todo => <TodoList todo={todo} key={todo.id} />)
         }
 
         <hr class="mt-4" />

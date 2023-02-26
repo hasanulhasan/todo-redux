@@ -1,5 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { colorChanged, statusChanged } from '../redux/filter/actions';
 
 const numberOfToDos = (no_of_todos) => {
   switch (no_of_todos) {
@@ -15,27 +16,44 @@ const numberOfToDos = (no_of_todos) => {
 
 const Footer = () => {
   const todos = useSelector(state => state.todos);
+  const dispatch = useDispatch();
   const remainingToDos = todos.filter(todo => !todo.completed).length
+  const filters = useSelector(state => state.filters)
+  const { status, colors } = filters;
 
+  const handleStatusChanged = (status) => {
+    dispatch(statusChanged(status))
+  }
+  const handleColorChanged = (color) => {
+    if (colors.includes(color)) {
+      dispatch(colorChanged(color, 'remove'))
+    }
+    else {
+      dispatch(colorChanged(color, 'added'))
+    }
+  }
   return (
     <div class="mt-4 flex justify-between text-xs text-gray-500">
       <p>{numberOfToDos(remainingToDos)} left</p>
       <ul class="flex space-x-1 items-center text-xs">
-        <li class="cursor-pointer font-bold">All</li>
+        <li onClick={() => handleStatusChanged('All')} class={`cursor-pointer ${status === 'All' && 'font-bold'} `}>All</li>
         <li>|</li>
-        <li class="cursor-pointer">Incomplete</li>
+        <li onClick={() => handleStatusChanged('Incomplete')} class={`cursor-pointer ${status === 'Incomplete' && 'font-bold'}`}>Incomplete</li>
         <li>|</li>
-        <li class="cursor-pointer">Complete</li>
+        <li onClick={() => handleStatusChanged('Complete')} class={`cursor-pointer ${status === 'Complete' && 'font-bold'}`}>Complete</li>
         <li></li>
         <li></li>
         <li
-          class="h-3 w-3 border-2 border-green-500 md:hover:bg-green-500 rounded-full cursor-pointer bg-green-500"
+          onClick={() => handleColorChanged('green')}
+          class={`h-3 w-3 border-2 border-green-500 md:hover:bg-green-500 rounded-full cursor-pointer  ${colors.includes('green') && 'bg-green-500'}`}
         ></li>
         <li
-          class="h-3 w-3 border-2 border-red-500 md:hover:bg-red-500 rounded-full cursor-pointer"
+          onClick={() => handleColorChanged('red')}
+          class={`h-3 w-3 border-2 border-red-500 md:hover:bg-red-500 rounded-full cursor-pointer ${colors.includes('red') && 'bg-red-500'}`}
         ></li>
         <li
-          class="h-3 w-3 border-2 border-yellow-500 md:hover:bg-yellow-500 rounded-full cursor-pointer"
+          onClick={() => handleColorChanged('yellow')}
+          class={`h-3 w-3 border-2 border-yellow-500 md:hover:bg-yellow-500 rounded-full cursor-pointer ${colors.includes('yellow') && 'bg-yellow-500'}`}
         ></li>
       </ul>
     </div>

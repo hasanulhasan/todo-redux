@@ -10,6 +10,12 @@ export const initialState = [
     text: 'Learn Node JS',
     completed: false,
     color: 'red'
+  },
+  {
+    id: 3,
+    text: 'Watching Movie',
+    completed: false,
+    color: 'green'
   }
 ]
 

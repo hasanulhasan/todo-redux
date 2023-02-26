@@ -2,7 +2,7 @@ import { COLORCHANGED, STATUSCHANGED } from "./actionTypes";
 
 const initialState = {
   status: 'All',
-  color: []
+  colors: []
 }
 const filterReducer = (state = initialState, action) => {
   switch (action.type) {
