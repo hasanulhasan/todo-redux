@@ -27,7 +27,8 @@ export const deleted = (doId) => {
     payload: doId
   }
 }
-export const allcompleted = (doId) => {
+export const allcompleted = () => {
+  console.log('clicked')
   return {
     type: ALLCOMPLETED
   }

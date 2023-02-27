@@ -20,7 +20,7 @@ const Home = () => {
         {
           todos.filter(todo => {
             const { status } = filters;
-            console.log(status)
+            // console.log(status)
             switch (status) {
               case 'Completed':
                 return todo.completed;
@@ -29,7 +29,16 @@ const Home = () => {
               default:
                 return true;
             }
-          }).map(todo => <TodoList todo={todo} key={todo.id} />)
+          }).filter(todo => {
+            const { colors } = filters;
+            if (colors.length > 0) {
+              return colors.include(todo?.color)
+            }
+            else {
+              return true
+            }
+          })
+            .map(todo => <TodoList todo={todo} key={todo.id} />)
         }
 
         <hr class="mt-4" />

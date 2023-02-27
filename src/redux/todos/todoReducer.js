@@ -12,7 +12,9 @@ const todoReducer = (state = initialState, action) => {
       return [
         ...state,
         {
-          id: nextTodoId(state)
+          id: nextTodoId(state),
+          text: action.payload,
+          completed: false
         }
       ]
     case TOGGLED:
@@ -37,8 +39,9 @@ const todoReducer = (state = initialState, action) => {
         }
       })
     case DELETED:
-      return state.filter(todo => todo.id !== action.payload)
+      return state.filter(todo => todo.id !== action.payload);
     case ALLCOMPLETED:
+      console.log('all completed clicked')
       return state.map(todo => {
         return {
           ...todo,

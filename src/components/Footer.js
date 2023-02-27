@@ -27,9 +27,11 @@ const Footer = () => {
   const handleColorChanged = (color) => {
     if (colors.includes(color)) {
       dispatch(colorChanged(color, 'remove'))
+      console.log('remove called')
     }
     else {
       dispatch(colorChanged(color, 'added'))
+      console.log('added called')
     }
   }
   return (
