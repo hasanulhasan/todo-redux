@@ -49,6 +49,26 @@
       "text": "hdjhdjhdjsdh",
       "completed": false,
       "id": 9
+    },
+    {
+      "text": "Learn Redux from LWS",
+      "completed": false,
+      "id": 10
+    },
+    {
+      "text": "Learn Node Js from Programming Hero",
+      "completed": false,
+      "id": 11
+    },
+    {
+      "text": "Learn NextJs",
+      "completed": false,
+      "id": 12
+    },
+    {
+      "text": "Learn TypeScript",
+      "completed": false,
+      "id": 13
     }
   ]
 }

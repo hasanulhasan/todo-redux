@@ -4,6 +4,7 @@ import tikImg from './../assets/images/double-tick.png'
 import plusImg from './../assets/images/plus.png'
 import { useDispatch } from 'react-redux';
 import { added, allcompleted, clearcompleted } from '../redux/todos/ations';
+import addToDo from '../redux/todos/Thank/addToDo';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const Header = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(added(input));
+    dispatch(addToDo(input));
     setInput('')
   }
   const completeAll = () => {
