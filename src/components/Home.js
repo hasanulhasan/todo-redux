@@ -1,5 +1,6 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import fetchTodos from '../redux/todos/Thank/FetchApi';
 import Footer from './Footer';
 import Header from './Header';
 import Navbar from './Navbar';
@@ -8,8 +9,14 @@ import TodoList from './TodoList';
 const Home = () => {
   const todos = useSelector((state) => state.todos);
   const filters = useSelector(state => state.filters)
+  const dispatch = useDispatch();
   // const { status, colors } = filters
   // console.log(status)
+
+  useEffect(() => {
+    dispatch(fetchTodos)
+  }, [dispatch])
+
   return (
     <div
       class="grid place-items-center bg-blue-100 h-screen px-6 font-sans">

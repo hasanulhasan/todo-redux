@@ -1,5 +1,11 @@
-import { ADDED, ALLCOMPLETED, CLEARCOMPLETED, COLORSELECTED, DELETED, TOGGLED } from "./ationTypes"
+import { ADDED, ALLCOMPLETED, CLEARCOMPLETED, COLORSELECTED, DELETED, LOADED, TOGGLED } from "./ationTypes"
 
+export const loaded = (todos) => {
+  return {
+    type: LOADED,
+    payload: todos
+  }
+}
 export const added = (todoText) => {
   return {
     type: ADDED,
